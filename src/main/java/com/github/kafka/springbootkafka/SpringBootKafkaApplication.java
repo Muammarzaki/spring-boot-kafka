@@ -23,8 +23,9 @@ public class SpringBootKafkaApplication {
 
 		return args -> {
 			String topic = "belajar-kafka";
-			kafkaPublisher.publish(topic, "test", "test kafka");
-			kafkaPublisher.publish(topic, "test2", "test 2 kafka");
+			for (int i = 0; i < 50; i++) {
+				kafkaPublisher.publish(topic, "test", "kafka massage " + i);
+			}
 		};
 	}
 }
