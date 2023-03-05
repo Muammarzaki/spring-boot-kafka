@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.EnableKafka;
 
-import com.github.kafka.springbootkafka.kafka.KafkaPublisher;
+import com.github.kafka.springbootkafka.kafka.producer.KafkaPublisher;
 
 @SpringBootApplication
 @EnableKafka

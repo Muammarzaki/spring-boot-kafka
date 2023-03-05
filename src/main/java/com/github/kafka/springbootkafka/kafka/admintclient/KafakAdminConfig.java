@@ -1,4 +1,4 @@
-package com.github.kafka.springbootkafka.kafka;
+package com.github.kafka.springbootkafka.kafka.admintclient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaAdmin;
+
+import com.github.kafka.springbootkafka.kafka.KafkaProperties;
 
 /**
  * kafakConfig

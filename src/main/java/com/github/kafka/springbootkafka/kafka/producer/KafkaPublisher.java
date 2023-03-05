@@ -1,4 +1,4 @@
-package com.github.kafka.springbootkafka.kafka;
+package com.github.kafka.springbootkafka.kafka.producer;
 
 import java.util.concurrent.CompletableFuture;
 
