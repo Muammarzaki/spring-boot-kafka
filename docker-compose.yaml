@@ -1,4 +1,5 @@
 version: '2'
+  
 services:
   zookeeper:
     container_name: zookeeper
@@ -9,6 +10,8 @@ services:
       - ZOOKEEPER_TICK_TIME=2000
     ports:
       - 2181:2181
+    networks:
+      - java_kafka
   
   kafka:
     image: bitnami/kafka:latest
@@ -23,3 +26,20 @@ services:
       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=false
       - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+    networks:
+      - java_kafka
+      
+  spring-boot-kafka:
+    image: marsal/spring-boot-kafka:latest
+    container_name: spring-boot-kafka
+    depends_on:
+      - kafka
+    ports:
+      - 8083:8080
+    networks:
+      - java_kafka
+    
+
+networks:
+  java_kafka:
+   

@@ -23,9 +23,7 @@ public class SpringBootKafkaApplication {
 
 		return args -> {
 			String topic = "belajar-kafka";
-			for (int i = 0; i < 50; i++) {
-				kafkaPublisher.publish(topic, "test", "kafka massage " + i);
-			}
+			kafkaPublisher.publish(topic, "ping");
 		};
 	}
 }

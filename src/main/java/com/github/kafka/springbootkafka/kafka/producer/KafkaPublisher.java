@@ -1,5 +1,6 @@
 package com.github.kafka.springbootkafka.kafka.producer;
 
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 import org.springframework.kafka.core.KafkaTemplate;
@@ -22,6 +23,20 @@ public class KafkaPublisher {
     }
 
     public void publish(String topic, String key, Object data) {
+        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, key, data);
+        future.whenCompleteAsync((result, ex) -> {
+            if (ex == null) {
+                log.info("\u001b[32msend to topic {} with key {} success :: {}\u001b[00m", topic, key,
+                        result.getProducerRecord().getClass());
+            } else {
+                log.info("\u001b[31msend to topic {} with key {} failur :: {}", topic, key,
+                        ex.getCause().getMessage());
+            }
+        });
+    }
+
+    public void publish(String topic, Object data) {
+        String key = UUID.randomUUID().toString();
         CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topic, key, data);
         future.whenCompleteAsync((result, ex) -> {
             if (ex == null) {
