@@ -27,7 +27,7 @@ public class MassageController {
         this.topic = topic;
     }
 
-    @GetMapping("massage")
+    @GetMapping("send-massage")
     public ResponseEntity<String> sendMassage(@RequestParam String massage) {
         kafkaPublisher.publish(topic.name(), massage);
         return ResponseEntity.ok().body("Success");

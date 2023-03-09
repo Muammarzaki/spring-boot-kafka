@@ -1,7 +1,5 @@
 spring:
-  profiles:
-    active: dev
   kafka:
-    bootstrap-servers: ${BOOTSTRAP_SERVER}
+    bootstrap-servers: ${BOOTSTRAP_SERVER:127.0.0.1:9092}
 server:
-  port: ${SERVER_PORT}
+  port: 8010
