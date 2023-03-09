@@ -13,11 +13,15 @@ import org.springframework.kafka.core.ProducerFactory;
 
 import com.github.kafka.springbootkafka.kafka.KafkaProperties;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * KafkaProducerConfig
  */
 @Configuration
+@Slf4j
 public class KafkaProducerConfig {
+
     private KafkaProperties kafkaProperties;
 
     /**
@@ -38,6 +42,7 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getBootstrapAddress());
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        log.info("Kafka Producer use IP {}", kafkaProperties.getBootstrapAddress());
         return props;
     }
 

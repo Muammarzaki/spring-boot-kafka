@@ -12,10 +12,13 @@ import org.springframework.kafka.core.KafkaAdmin;
 
 import com.github.kafka.springbootkafka.kafka.KafkaProperties;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * kafakConfig
  */
 @Configuration
+@Slf4j
 public class KafakAdminConfig {
     private KafkaProperties kafkaProperties;
 
@@ -30,6 +33,7 @@ public class KafakAdminConfig {
     public KafkaAdmin kafakAdmin() {
         Map<String, Object> kafkaAdminconfig = new HashMap<>();
         kafkaAdminconfig.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getBootstrapAddress());
+        log.info("kafka AdminClient use ip {}", kafkaProperties.getBootstrapAddress());
         return new KafkaAdmin(kafkaAdminconfig);
     }
 
