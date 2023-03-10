@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: ${PROFILE:dev}
   kafka:
     bootstrap-servers: ${BOOTSTRAP_SERVER:127.0.0.1:9092}
 server:
